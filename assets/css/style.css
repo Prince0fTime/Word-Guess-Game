@@ -21,7 +21,14 @@ p {
     width: 50%;
     border: 5px dashed white;
 }
-.pics{
+
+.pics {
     height: 50%;
     width: 100%;
+}
+
+.ClickReset {
+    border: 5px dashed white;
+    padding: 3% 3% 3% 3%;
+    margin: 2% 2% 2% 2%;
 }
