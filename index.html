@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style-reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>A Word Guess Game</title>
+</head>
+
+<body>
+    <div class="container">
+        <img class="pics" src="assets/images/2-WordGuess.jpg" width="800" height="400">
+        <h1>Welcome to A Word Guess Game</h1>
+        <h1>---------------------------------------------------------</h1>
+        <p id="ClickReset">Click me to reset the game.</p>
+        <p>Type anykey to start :)</p>
+        <h1>---------------------------------------------------------</h1>
+        <p id="demo"></p>
+        <p id="demo2">user Guessed: </p>
+        <p id="demo3">current word: </p>
+        <h1>---------------------------------------------------------</h1>
+        <p id="demo4">you have used: Guess of: </p>
+        <h1>---------------------------------------------------------</h1>
+        <p id="winnerBox">number of wins: </p>
+        <p id="lossesBox">number of losses: </p>
+        <h1>---------------------------------------------------------</h1>
+        <p>Please hit Enter 1 to 2 times after all Guess</p>
+        <p>you have because of a BUG :/ </p>
+        <h1>---------------------------------------------------------</h1>
+    </div>
+
+
+
+
+    <script>
+        document.getElementById("ClickReset").onclick = function () {
+            gameReset()
+        };
+
+        var correctGuessArray = [];
+        var correct = 0;
+        var Guess = 0;
+        var wins = 0;
+        var losses = 0;
+        var winner = 0;
+        var userGuessed = [];
+        var str = ["pie", "cat", "dog", "car", "book", "airplane", "adventurous", "unadvised", "indicate", "famous",
+            "abstracted"
+        ];
+
+
+
+
+        var strElement = 0;
+        var str2 = [];
+
+
+        var stringLength = str[strElement].length;
+
+        function gameReset() {
+            winner = 0;
+            console.log("winner " + winner);
+            Guess = 0;
+            correct = 0;
+            userGuessed = [];
+            correctGuessArray = [];
+            str2 = [];
+            stringLength = 0;
+            arraySetUp();
+            document.getElementById("demo").innerHTML = ("have fun :)");
+            document.getElementById("demo2").innerHTML = ("user Guessed: " + userGuessed);
+            document.getElementById("demo3").innerHTML = ("current word: " + correctGuessArray);
+            document.getElementById("winnerBox").innerHTML = ("number of wins: " + wins);
+            document.getElementById("lossesBox").innerHTML = ("number of losses: " + losses);
+
+            // strElement = Math.floor(Math.random() * Math.floor(str.length));
+        }
+        //for random word
+        // strElement = Math.floor(Math.random() * Math.floor(str.length));
+        //for setting up the 
+        function arraySetUp() {
+            //for random word
+            strElement = Math.floor(Math.random() * Math.floor(str.length));
+            console.log("strElement in arraysetup " + strElement);
+            for (var i = 0; i < str[strElement].length; i++) {
+                userGuessed[i] = "_";
+                correctGuessArray[i] = "_";
+                document.getElementById("demo2").innerHTML = ("user Guessed: " + userGuessed);
+                document.getElementById("demo3").innerHTML = ("current word: " + correctGuessArray);
+                document.getElementById("demo4").innerHTML = ("you have used: " + Guess + " Guess of: " + stringLength);
+
+            }
+            str2 = str[strElement];
+            console.log(str2);
+            stringLength = str[strElement].length;
+            console.log("stringLength in setup " + stringLength);
+        }
+
+        arraySetUp();
+        document.onkeyup = function (event) {
+            var userGuess = event.key.toLocaleLowerCase();
+            var positionInString;
+            var positionInArray;
+            console.log("stringLength " + stringLength);
+
+            // for text input
+            // var m = document.getElementById("myText").value;
+            // console.log(m);
+
+
+            function amWinner(i) {
+                if ((str2.length === correctGuessArray.length) && (str2.charAt(i)) === (correctGuessArray[i])) {
+                    correct++;
+                    if (correct === correctGuessArray.length) {
+                        winner = 1;
+                    }
+                    console.log("correct nummber: " + correct);
+                    console.log("is it ture? " + ((str[strElement].charAt(i)) == (correctGuessArray[i])));
+                }
+            }
+            if (((positionInArray = userGuessed.indexOf(userGuess)) === (-1)) && (Guess !== stringLength)) {
+                console.log("stringLength " + stringLength);
+                if ((positionInString = str[strElement].search(userGuess)) !== (-1)) {
+                    var characterInString = str[strElement].charAt(positionInString);
+
+                    // var str2 = str[strElement];
+                    for (var i = 0; i < str2.length; i++) {
+                        if (str2[i] === characterInString) {
+                            correctGuessArray[i] = ((str2.charAt(str2.indexOf(characterInString))) && (str2.charAt(
+                                str2.indexOf(characterInString))));
+                            console.log(characterInString);
+                            console.log("str2 " + str2);
+                        }
+
+
+                    }
+
+                    // correctGuessArray[positionInString] = characterInString;
+                    console.log("Position In String" + positionInString);
+                    console.log(correctGuessArray);
+
+
+                }
+                userGuessed[Guess] = userGuess;
+
+
+                // document.getElementById("demo").innerHTML = userGuess;
+                document.getElementById("demo2").innerHTML = ("user Guessed: " + userGuessed);
+                document.getElementById("demo3").innerHTML = ("current word: " + correctGuessArray);
+                document.getElementById("demo4").innerHTML = ("you have used: " + Guess + " Guess of: " +
+                    stringLength);
+
+
+                Guess++;
+                console.log(correctGuessArray);
+                console.log(userGuess);
+                console.log(userGuessed);
+                console.log("Guess " + Guess);
+
+            } else {
+
+                for (i = 0; i <= stringLength; i++) {
+                    console.log(correctGuessArray);
+                    console.log(str[strElement]);
+                    console.log("string Length " + stringLength);
+                    console.log("correct Length " + correct);
+                    // console.log(positionInString);
+                    // console.log(characterInString);
+
+
+                    // if ((str2.length === correctGuessArray.length) && (str2.charAt(i)) === (correctGuessArray[i])) {
+                    //     correct++;
+                    //     if (correct === correctGuessArray.length) {
+                    //         winner = 1;
+                    //     }
+                    //     console.log("correct nummber: " + correct);
+                    //     console.log("is it ture? " + ((str[strElement].charAt(i)) == (correctGuessArray[i])));
+                    // }
+                    amWinner(i);
+                }
+                if (winner == 1) {
+                    console.log(correctGuessArray.length);
+                    console.log("winner " + winner);
+                    wins++;
+                    console.log(wins);
+                    document.getElementById("demo").innerHTML = ("winner winner chicken dinner");
+                    document.getElementById("winnerBox").innerHTML = ("number of wins: " + wins);
+
+                }
+                if (winner === 0) {
+                    losses++;
+                    console.log("winner " + winner);
+                    var gameOver = "Game over continue?";
+                    document.getElementById("demo").innerHTML = (gameOver);
+                    document.getElementById("lossesBox").innerHTML = ("number of losses: " + losses);
+
+                }
+            }
+
+
+
+        };
+    </script>
+</body>
+
+</html>

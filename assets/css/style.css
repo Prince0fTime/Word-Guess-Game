@@ -1,0 +1,24 @@
+/*this is an experimental background setting */
+
+body {
+    background: rgb(0, 0, 0);
+}
+
+h1,
+p {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+
+.container {
+    margin: 5% auto 5%;
+    height: 100%;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 50%;
+    border: 5px dashed white;
+}
+
