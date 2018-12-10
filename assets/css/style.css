@@ -21,4 +21,7 @@ p {
     width: 50%;
     border: 5px dashed white;
 }
-
+.pics{
+    height: 50%;
+    width: 100%;
+}
