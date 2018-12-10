@@ -145,6 +145,7 @@
 
                 }
                 userGuessed[Guess] = userGuess;
+                ++Guess;
 
 
                 // document.getElementById("demo").innerHTML = userGuess;
@@ -154,13 +155,14 @@
                     stringLength);
 
 
-                Guess++;
                 console.log(correctGuessArray);
                 console.log(userGuess);
                 console.log(userGuessed);
                 console.log("Guess " + Guess);
 
             } else {
+                
+
 
                 for (i = 0; i <= stringLength; i++) {
                     console.log(correctGuessArray);
