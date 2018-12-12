@@ -124,6 +124,7 @@
                     console.log("is it ture? " + ((str[strElement].charAt(i)) == (correctGuessArray[i])));
                 }
             }
+
             if (((positionInArray = userGuessed.indexOf(userGuess)) === (-1)) && (Guess !== stringLength)) {
                 console.log(((positionInArray = userGuessed.indexOf(userGuess)) === (-1)) && (Guess !==
                     stringLength));
@@ -157,8 +158,7 @@
                 // document.getElementById("demo").innerHTML = userGuess;
                 document.getElementById("demo2").innerHTML = ("user Guessed: " + userGuessed);
                 document.getElementById("demo3").innerHTML = ("current word: " + correctGuessArray);
-                document.getElementById("demo4").innerHTML = ("you have used: " + Guess + " Guess of: " +
-                    stringLength);
+                document.getElementById("demo4").innerHTML = ("you have used: " + Guess + " Guess of: " + stringLength);
 
 
                 console.log(correctGuessArray);
