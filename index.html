@@ -113,7 +113,9 @@
 
 
             function amWinner(i) {
-                if ((str2.length === correctGuessArray.length) && (str2.charAt(i)) === (correctGuessArray[i])) {
+                if ((str2.length === correctGuessArray.length) && (str2.charAt(i)) === (correctGuessArray[i]) && (
+                        str2.charAt(i)) !== ("_")) {
+
                     correct++;
                     if (correct === correctGuessArray.length) {
                         winner = 1;
@@ -123,6 +125,9 @@
                 }
             }
             if (((positionInArray = userGuessed.indexOf(userGuess)) === (-1)) && (Guess !== stringLength)) {
+                console.log(((positionInArray = userGuessed.indexOf(userGuess)) === (-1)) && (Guess !==
+                    stringLength));
+
                 console.log("stringLength " + stringLength);
                 if ((positionInString = str[strElement].search(userGuess)) !== (-1)) {
                     var characterInString = str[strElement].charAt(positionInString);
@@ -184,7 +189,7 @@
                     // }
                     amWinner(i);
                 }
-                if (winner == 1) {
+                if ((winner == 1) && (Guess >= stringLength)) {
                     console.log(correctGuessArray.length);
                     console.log("winner " + winner);
                     wins++;
@@ -192,15 +197,15 @@
                     document.getElementById("demo").innerHTML = ("winner winner chicken dinner");
                     document.getElementById("winnerBox").innerHTML = ("number of wins: " + wins);
 
-                }
-                if (winner === 0) {
+                };
+                if ((winner === 0) && (Guess >= stringLength)) {
                     losses++;
                     console.log("winner " + winner);
                     var gameOver = "Game over continue?";
                     document.getElementById("demo").innerHTML = (gameOver);
                     document.getElementById("lossesBox").innerHTML = ("number of losses: " + losses);
 
-                }
+                };
             }
 
 
